@@ -1,8 +1,120 @@
-<HTML>
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="resources/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- 
+   <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+-->
 
-<HEAD></HEAD>
-<BODY>
-Testing
-</BODY>
+</head>
+<body id="mainbody">
 
-</HTML>
+<div id="main">
+  <div id="sidebar">
+
+      
+<table align="right" id="panelplaceholder">
+<thead>
+</thead>
+<tbody class="menupanel">
+
+
+<tr>
+  <td align="right">Blog<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+</tr>
+<tr>
+  <td align="right">About Me<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+</tr>
+<tr>
+  <td align="right">Contact<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+</tr>
+
+
+</tbody></table>
+
+  </div>
+  
+      <object id="page-wrap" style="background-color:#f5f5f5;" content="text/html" data=""></object>
+
+</div>
+
+<script type="text/javascript">    
+
+var pages=["blog/index.html","aboutme/index.html","contact/index.html"];
+
+var selected=0;
+
+    $("#sidebar").height($(window).height());
+    $("#page-wrap").height($(window).height());
+    $("#panelplaceholder").css({"position":"relative"});
+    $("#panelplaceholder").css({"top":0.66*$(window).height()});
+
+
+
+    $(window).on("resize",function(){ 
+        $("#sidebar").height($(window).height());
+        $("#page-wrap").height($(window).height());
+        $("#panelplaceholder").css({"top":0.66*$(window).height()});  
+        });
+
+
+    function mousein(i)
+    {
+        var op=$($($(".menupanel")[0]).children()[i]);
+        console.log(op.html());
+        op.css({"color": "#ffffff"});
+        $(op.children()[0]).children()[0].src="resources/underline_over.png";
+    }
+
+    function mouseout(i)
+    {
+        if(selected==i)
+            return;
+        var op=$($($(".menupanel")[0]).children()[i]);
+        op.css({"color": "#f66515"});
+        $(op.children()[0]).children()[0].src="resources/underline.png";   
+    }
+
+    function select(i)
+    {
+
+        var temp=selected;
+        selected=i;
+        mouseout(temp);
+        mousein(i);
+        $("#page-wrap").attr("data",pages[i]);
+
+    }
+
+
+
+    for (var i =0 ; i <= $($(".menupanel")[0]).children().length - 1; i++) {
+        
+        var op=$($(".menupanel")[0]).children()[i];
+
+        //console.log(op);
+
+        (function(idd){
+            $(op).mouseover( function(){ mousein(idd); }  ); 
+        })(i);
+
+        
+        (function(idd){
+            $(op).mouseout( function(){ mouseout(idd); }  ); 
+        })(i);           
+
+        (function(idd){
+            $(op).click( function(){ select(idd); }  ); 
+        })(i);   
+   
+    }
+
+
+select(0);
+
+</script>
+
+
+</body>
+</html>
