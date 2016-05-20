@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correcting Exposure</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+
+
+<body><div class="container">
+<h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> Back</a></h4>
+<h1 id="old-school-photoshop-the-image-is-dark-but-not-full-of-terrors">Old School Photoshop: The image is dark, but not full of terrors </h1>
+
+<p>During my last days as an undergraduate, me and my friends went for a photoshoot. It was very early in the morning during the mighty summers of Kanpur. The Sun was starting to come up from behind the clouds and the sky looked lovely. So I asked my friend Ish to click this photo of me and Anand, because I liked the sky in the background so much.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0.jpg" alt="im1" title=""></p>
+
+
+
+<h2 id="a-cameras-dilemma">A camera’s dilemma</h2>
+
+<p>When you are clicking a picture, there are many objects in the scene in front of you. You know that there is only one point where the camera can focus accurately. The rest get blurred- some less and some more. That’s what gives you the amazing Bokeh effect. The same is true for exposure.  In this photo, the sky is too bright compared to the foreground. The camera can control the amount of light entering it, but if it ramps up the exposure  so that the people in the image look optimally bright, tons of light from the sky would cause the sensors to max out . I have adjusted the brightness and contrast in Photoshop and here is how it would have looked.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/001.jpg" alt="im1" title=""></p>
+
+<p>And to prevent the sky part from getting flushed with completely white light, the camera has to reduce the exposure, but that still leaves us with the problem - the camera can choose only one of the two - us, or the sky. </p>
+
+
+
+<h2 id="layers-and-a-lot-of-erasing">Layers, and a lot of erasing </h2>
+
+<p>A canvas in Photoshop is made up a stack of layers. A layer is just an image, but it can have transparent areas, from where you can look through and see the layers below. Here, I duplicate the original image to make a new layer, which I then adjust for brightness so that the people in the image look bright. I erase the  top part to remove the sky like this.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/002.jpg" alt="im1" title=""></p>
+
+<p>The checkered part is actually the part which is erased and is now transparent. I place this layer on top of the original pic.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/003.jpg" alt="im1" title=""></p>
+
+<p>See how you can look through to see the sky as it is in the bottom unedited layer. I now carefully erase parts of the top layer near the part where the two layers merge, using a soft brush.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/004.jpg" alt="im1" title=""></p>
+
+<p>The regions near the more intricate regions need to be erased carefully. If I am clumsy, I might end up erasing some parts of the face, which will make the dark faces of the bottom layer show up, and defeat our entire purpose.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/005.jpg" alt="im1" title=""></p>
+
+<p>Once completed, the image looks like this, where you have good exposure for both the sky and the foreground.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/006.jpg" alt="im1" title=""></p>
+
+
+
+<h2 id="why-settle-for-good-when-you-can-make-it-awesome">Why settle for good when you can make it awesome</h2>
+
+<p>Amongst the few features of Photoshop that I know, perhaps the coolest one is <code>Blending Modes</code>. It decides how the a layer would add to the layer below. It basically changes the mathematics of how the pixels of the two layers are combined to generate pixels for the overall output image. It is very easy to just cycle through the available blending options, and so I often experiment with it. I take the image that we created in the previous section and make a duplicate layer on top. The blending mode <code>Color Dodge</code> gives the following output.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/007.jpg" alt="im1" title=""></p>
+
+<p>It looks cool. I again carve out the top portion to reveal the sky from the back. </p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/008.jpg" alt="im1" title=""></p>
+
+<p>Notice the pattern here - we carve out a select region from the image and transfer it to a new layer. Then we do all sorts of things on the top layer. All you need is a careful hand while using the eraser tool.</p>
+
+<p>Here I go a little further to do the same with the sky. So now I have a layer with only the sky in it, and the blending mode <code>Color Burn</code>. It brings out the color. Look at the blue of the sky and the red at the horizon.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/009.jpg" alt="im1" title=""></p>
+
+<p>But it looks too much. In any such situation, you can simply reduce the opacity of the layer so that the effect gets less pronounced. Also, we need to take care of the clumsy erasing done here at the boundary.  So I press  <code>Undo</code> a lot and attempt again!</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0092.jpg" alt="im1" title=""></p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0093.jpg" alt="im1" title=""></p>
+
+<p>Now see all three layers together. Looks great. </p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0094.jpg" alt="im1" title=""></p>
+
+<p>One last thing. Sunlight looks yellow, or yellow-reddish. It has that glorious subtle color which common cameras in automatic mode fail to capture. So I use the Color Balance tool to add a tinge of yellow. It also does the job of creating a sense of uniformity across the top and bottom parts.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0095.jpg" alt="im1" title=""></p>
+
+<p>Looks great. So that’s how you can create good photos from underexposed ones, even from a single JPG as in this case.</p>
+
+<p>Here’s the cliche before-after pic.</p>
+
+<p><img src="http://localhost/~kkrishna/blog/correctingExposure/0.jpg" alt="im1" title=""> <br>
+<img src="http://localhost/~kkrishna/blog/correctingExposure/corrected.jpg" alt="im1" title=""></p>
+
+<hr>
+
+<p><i> Written by <a href="http://kkrishna.in" target="_blank">Kundan Krishna</a> on 20th May 2016 </i></p>
+
+<blockquote>
+  <p>The images were edited in Adobe Photoshop 7.0 </p>
+</blockquote></div></body>
+</html>
