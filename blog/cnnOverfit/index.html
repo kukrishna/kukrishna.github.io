@@ -400,11 +400,10 @@ foolingImage</code></pre>
 
 <h2 id="why-is-this-bad">Why is this bad?</h2>
 
-<p>Although the shift thing can be taken care of by data augmentation, it is still feels like a manual hack. Basically, the gradient descent based training would make the network try anything and everything that it can, to settle at a good hack which can help it score well. At that time, the classification will be great. But does the network think about a 7 the same way we do? Maybe not. It has probably not learnt the characteristic way we look at the 7 - as  a collection to two strokes. For the network, a dash (-) and a seven (7) are the same. I think it’s important that networks look at the world like we do.</p>
+<p>Although data augmentation can take care of the different answers we are getting here by just shifting the input, it is still feels like a manual hack. Our perception of a seven might not have been encoded into it, and it might have settled at a good hack which can help it score well. At that time, the classification score will be great. But does the network think about a 7 the same way we do? Maybe not. It might not have learnt the characteristic way we look at the 7 - as  a collection to two strokes, the way we have been taught to write in our childhood. For the network, a dash (-) and a seven (7) are the same. I think it’s important that after training, networks look at the world like we do.</p>
 
 
-
-<h2 id="too-much-expectations-from-machine">Too much expectations from machine</h2>
+<h2 id="too-much-expectations-from-machine">Too much expectation from machine</h2>
 
 <p>Before we start criticizing the network, I’d like to make a case in its defence. The only thing that this machine has seen in this world is 1s and 7s. We know that a dash(-) is not the same as a seven(7) because we have encountered moments in our life where we have seen and used both symbols in different contexts. Think about it. If there were no digit as 7, but we were familiar with the dash(-) symbol, you would have considered 7 as a dash(-) with a vertical smeared scratch (which we would discard as noise). </p>
 
@@ -412,12 +411,11 @@ foolingImage</code></pre>
 
 <h2 id="discriminative-vs-generative-learning-teaching-machines-to-imagine">Discriminative vs Generative learning : Teaching machines to imagine</h2>
 
-<p>Discriminative learning aims at classifying inputs into different classes. The aim of generative learning, on the other hand, is to learn to produce instances of a particular class. So a discriminative model like what we’ve trained here is good at classifying images, <strong>provided that they actually belong to one of the classes</strong> that the model was trained to recognize. The life of generative models is much harder. If you ask a machine to draw a seven, it has a completely empty canvas infront of it which it has to paint. While a discriminative model can get away with <br>
-learning a hack (like this one did) to get good accuracy, the generative model has to struggle to get an overall sense of what a seven(7) should look like. They have to learn to imagine. </p>
+<p>Discriminative learning aims at classifying inputs into different classes. The aim of generative learning, on the other hand, is to learn to produce instances of a particular class. So a discriminative model like what we’ve trained here is good at classifying images, <strong>provided that they actually belong to one of the classes</strong> that the model was trained to recognize. The life of generative models is much harder. If you ask a machine to draw a seven, it has a completely empty canvas infront of it which it has to paint. While a discriminative model can get away with learning a hack (like this one did) to get good accuracy, the generative model has to struggle to get an overall sense of what a seven(7) should look like. They have to learn to imagine. </p>
 
 
 
-<h2 id="what-kind-of-learners-are-we-humans">What kind of learners are we humans?</h2>
+<h2 id="what-kind-of-learners-are-we-humans">In which way do humans learn?</h2>
 
 <p>We are indeed able to imagine up instances of any particular class(object) in our minds. And so one would expect that our brains learn in a generative fashion and does not engage in shortcuts.</p>
 
