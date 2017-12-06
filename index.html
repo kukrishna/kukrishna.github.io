@@ -21,16 +21,16 @@
 
 
 <tr>
-  <td align="right">Blog<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+  <td align="right">Blog____</td>
 </tr>
 <tr>
-  <td align="right">About Me<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+  <td align="right">About Me____</td>
 </tr>
 <tr>
-  <td align="right">Art<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+  <td align="right">Art____</td>
 </tr>
 <tr>
-  <td align="right">Contact<img src="resources/underline.png" style="position:relative; width:40%;"></td>
+  <td align="right">Contact____</td>
 </tr>
 
 
@@ -67,7 +67,6 @@ var selected=0;
         var op=$($($(".menupanel")[0]).children()[i]);
         console.log(op.html());
         op.css({"color": "#ffffff"});
-        $(op.children()[0]).children()[0].src="resources/underline_over.png";
     }
 
     function mouseout(i)
@@ -75,8 +74,7 @@ var selected=0;
         if(selected==i)
             return;
         var op=$($($(".menupanel")[0]).children()[i]);
-        op.css({"color": "#f66515"});
-        $(op.children()[0]).children()[0].src="resources/underline.png";   
+        op.css({"color": "#000000"});
     }
 
     function select(i)
