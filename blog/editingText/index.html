@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Text generation via editing</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<style type="text/css">
+body
+{
+  font-size: 1.8em; 
+}
+</style>
+
+
+</head>
+<body><div class="container"><h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> Back</a></h4>
+
+<h1 id="text-generation-via-editing">Neural Text Generation via Editing</h1>
+
+<p>The field of text generation has seen an explosion in the number of works using neural networks (more specifically LSTMs) to generate text. These methods generate sentences in a sequential word-by-word fashion where at each step you pick a word according to a probability distribution over them. Generating sentences from scratch has proven to be a really difficult task. Maintaining grammar is a struggle, and sentences tend to digress or follow some common phrases repeatedly. If you think about it, it seems really difficult if not impossible, to completely represent the meaning of an entire sentence into the small initial cell state of an LSTM which has the task of generating it. Stealing words from Professor Raymond Mooney’s talk<a href="#fn:talk" id="fnref:talk" title="See footnote" class="footnote">1</a>,</p>
+
+<blockquote>
+  <p>“You can’t cram the meaning of a whole sentence into a single vector!”  <br>
+  - <em>Professor Mooney (slightly paraphrased)</em></p>
+</blockquote>
+
+<p>It is refreshing to come across some recent works where people do not attempt to start from scratch, but take help from some reference text while generating. This blogpost gives a peek at two such cool works.</p>
+
+
+
+<h3 id="pointer-generator-network">Pointer-generator network</h3>
+
+<p>The specific problem addressed in this work<a href="#fn:see2017get" id="fnref:see2017get" title="See footnote" class="footnote">2</a> is the generation of summaries for news articles. The main attraction of the paper is a model which can both copy words from the source article, as well as come up with new words which are not in the article while generating the summary. The soul of the technique is an attention distribution over the source article’s words, which varies with the generation of each new word in the summary. So, for generating each word, the network flips a biased coin and depending on the result either copies the word in the summary which is <em>pointed</em> to with the highest attention, or <em>generates</em> a new word on its own. Hence the name <em>pointer-generator</em> network. A major contribution of the work is that the architecture learns the bias of the coin (which changes before generating each word) on its own, so that it knows when to be confident and generate new words versus when to just copy. This is just supposed to be a simplistic explanation. See the paper for more details.</p>
+
+<p>Experiments have shown that this model can learn to generate new words like <em>beat</em> in the summary by paying attention to related words like  <em>victorious</em> and <em>win</em> in the source article<a href="#fn:ex" id="fnref:ex" title="See footnote" class="footnote">3</a>.  Besides learning to generate new words, it also learns to make new sentences by cutting parts from different ones and joining them together - all with no explicit supervision other than the ground truth summaries of the articles! Of course it has some issues like sometimes it tends to just copy a lot and not generate much, and sometimes it joins clauses that together do not convey the correct sense. But overall it performs well and is a fantastic direction of work which shows how starting with a reference point improves the quality of generation.</p>
+
+
+
+<h3 id="sentence-generation-by-editing-prototypes">Sentence generation by editing prototypes</h3>
+
+<p>This work<a href="#fn:guu" id="fnref:guu" title="See footnote" class="footnote">4</a> uses one of my favourite neural architectures - variational autoencoders. People have tried autoencoding sentences earlier where an input sentence is mapped to a latent vector and a decoder learns to bring back the original sentence using just the vector. But again the performance was not good (read the statement by Prof. Mooney again). This work implements a model which learns to edit sentences in a controlled way to change them into new meaningful ones. This is done by using a conditional version of autoencoders, where you have to autoencode <script type="math/tex" id="MathJax-Element-1">x</script>(eg. <em>“The sandwich was nice.”</em>) given some lexically similar  sentence <script type="math/tex" id="MathJax-Element-2">x'</script>(eg. <em>“The sandwich was great.”</em>) and an edit vector <script type="math/tex" id="MathJax-Element-3">z</script> which is a hint about what should change to go from <script type="math/tex" id="MathJax-Element-4">x'</script> to <script type="math/tex" id="MathJax-Element-5">x</script> (remove <em>great</em> and add <em>nice</em>). They have modeled the edit vector as a concatenation of the sum of vector representations of words that should be added and words that should be removed. Although it looks like a big hint, note that the model has to learn where to add words while maintaining grammaticality, and summing the vector representations of words makes the hint fuzzy - both making the task far from trivial. After the training is done (which is another elaborate saga - see the paper), the decoder part can be used as a standalone neural editor which can generate new sentences from old ones with the given desired change. </p>
+
+
+
+<h3 id="why-is-this-a-big-deal">Why is this a big deal?</h3>
+
+<p>One obvious thing is that the grammar of the generated text is much better because of a grammatically correct starting reference point. But another thing which is much much more dear to me, is the ability to see into how the text is getting formed and to control its generation. It is much easier to have an intuitive grasp of attention distributions and edit vectors to see how they are leading to the text being generated, than trying to ponder what might be sitting inside a single vector tasked with generating an entire sentence. With edit vectors, you even have the ability to control generation. That is why I love this area. Hoping to see more work in this area and be a part of it soon!</p>
+
+<blockquote>
+  <p>Note: I stumbled upon a podcast on upcoming techniques in NLP called <a href="https://soundcloud.com/nlp-highlights" target="_blank">NLP Highlights</a> which is surprisingly up-to-date on the literature and keeps posting great content. You can find discussion about pointer-generator network <a href="https://soundcloud.com/nlp-highlights/23a" target="_blank">here</a> and Neural Editor <a href="https://soundcloud.com/nlp-highlights/42-generating-sentences-by-editing-prototypes-with-kelvin-guu" target="_blank">here</a> by Kelvin Guu himself.</p>
+</blockquote>
+
+<hr>
+
+<p><em>Written by <a href="http://kkrishna.in" target="_blank">Kundan Krishna</a> on  16th December 2017</em></p>
+
+<div class="footnotes"><hr><ol><li id="fn:talk">Professor Mooney’s talk on “Deep Natural Language Semantics” <a href="https://www.youtube.com/watch?v=GhBHRhIsQIE" target="_blank">here</a>. <a href="#fnref:talk" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:see2017get">See, Abigail et al. “Get To The Point: Summarization with Pointer-Generator Networks”. ACL 2017 <a href="#fnref:see2017get" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:ex">Example taken from See et al’s ACL 2017 paper <a href="#fnref:ex" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:guu">Guu, Kelvin et al. “Generating Sentences by Editing Prototypes”. arXiv:1709.08878 <a href="#fnref:guu" title="Return to article" class="reversefootnote">↩</a></li></ol></div></div></body>
+</html>
