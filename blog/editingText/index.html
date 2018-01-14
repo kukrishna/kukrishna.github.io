@@ -1,6 +1,26 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Text generation via editing</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+
+<!--- COMMON HEADER ELEMENTS BEGIN -->
+
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+<style type="text/css">
+body
+{
+  font-size: 1.8em; 
+}
+</style>
+
+<script type="text/javascript" src="../../resources/jquery.min.js"></script>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107196379-1"></script>
 <script>
@@ -11,22 +31,21 @@
   gtag('config', 'UA-107196379-1');
 </script>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neural Text generation via editing</title>
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript">
+  function loadsidebar()
+  {
+    $(".container").parent().prepend('<object id="sidebar" content="text/html" data="../../resources/sidebar.html"></object>') 
+  }
+</script>
 
-<style type="text/css">
-body
-{
-  font-size: 1.8em; 
-}
-</style>
-
+<!--- COMMON HEADER ELEMENTS END -->
 
 </head>
-<body><div class="container"><h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> Back</a></h4>
+<body onload="loadsidebar()">
+
+
+
+<div class="container"><h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> Back</a></h4>
 
 <h1 id="text-generation-via-editing">Neural Text Generation via Editing</h1>
 
@@ -68,4 +87,8 @@ body
 <p><em>Written by <a href="http://kkrishna.in" target="_blank">Kundan Krishna</a> on  16th December 2017</em></p>
 
 <div class="footnotes"><hr><ol><li id="fn:talk">Professor Mooney’s talk on “Deep Natural Language Semantics” <a href="https://www.youtube.com/watch?v=GhBHRhIsQIE" target="_blank">here</a>. <a href="#fnref:talk" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:see2017get">See, Abigail et al. “Get To The Point: Summarization with Pointer-Generator Networks”. ACL 2017 <a href="#fnref:see2017get" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:ex">Example taken from See et al’s ACL 2017 paper <a href="#fnref:ex" title="Return to article" class="reversefootnote">↩</a></li><li id="fn:guu">Guu, Kelvin et al. “Generating Sentences by Editing Prototypes”. arXiv:1709.08878 <a href="#fnref:guu" title="Return to article" class="reversefootnote">↩</a></li></ol></div></div></body>
+
+
+
+
 </html>

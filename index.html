@@ -1,124 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script type="text/javascript" src="resources/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- 
-   <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
--->
-
-</head>
-<body id="mainbody">
-
-<div id="main">
-  <div id="sidebar">
-
-      
-<table align="right" id="panelplaceholder">
-<thead>
-</thead>
-<tbody class="menupanel">
-
-
-<tr>
-  <td align="right">Blog____</td>
-</tr>
-<tr>
-  <td align="right">About Me____</td>
-</tr>
-<tr>
-  <td align="right">Publications____</td>
-</tr>
-<tr>
-  <td align="right">Art____</td>
-</tr>
-<tr>
-  <td align="right">Contact____</td>
-</tr>
-
-
-</tbody></table>
-
-  </div>
-  
-      <object id="page-wrap" style="background-color:#f5f5f5;" content="text/html" data=""></object>
-
-</div>
-
-<script type="text/javascript">    
-
-var pages=["blog/index.html","aboutme/index.html","publications/index.html","art/index.html","contact/index.html"];
-
-var selected=0;
-
-    $("#sidebar").height($(window).height());
-    $("#page-wrap").height($(window).height());
-    $("#panelplaceholder").css({"position":"relative"});
-    $("#panelplaceholder").css({"top":0.66*$(window).height()});
-
-
-
-    $(window).on("resize",function(){ 
-        $("#sidebar").height($(window).height());
-        $("#page-wrap").height($(window).height());
-        $("#panelplaceholder").css({"top":0.66*$(window).height()});  
-        });
-
-
-    function mousein(i)
-    {
-        var op=$($($(".menupanel")[0]).children()[i]);
-        console.log(op.html());
-        op.css({"color": "#ffffff"});
-    }
-
-    function mouseout(i)
-    {
-        if(selected==i)
-            return;
-        var op=$($($(".menupanel")[0]).children()[i]);
-        op.css({"color": "#000000"});
-    }
-
-    function select(i)
-    {
-
-        var temp=selected;
-        selected=i;
-        mouseout(temp);
-        mousein(i);
-        $("#page-wrap").attr("data",pages[i]);
-
-    }
-
-
-
-    for (var i =0 ; i <= $($(".menupanel")[0]).children().length - 1; i++) {
-        
-        var op=$($(".menupanel")[0]).children()[i];
-
-        //console.log(op);
-
-        (function(idd){
-            $(op).mouseover( function(){ mousein(idd); }  ); 
-        })(i);
-
-        
-        (function(idd){
-            $(op).mouseout( function(){ mouseout(idd); }  ); 
-        })(i);           
-
-        (function(idd){
-            $(op).click( function(){ select(idd); }  ); 
-        })(i);   
-   
-    }
-
-
-select(0);
-
-</script>
-
-
-</body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="0; url=http://kkrishna.in/blog">
+        <script type="text/javascript">
+            window.location.href = "http://kkrishna.in/blog"
+        </script>
+        <title>Page Redirection</title>
+    </head>
+    <body>
+        If you are not redirected automatically, follow this <a href='http://kkrishna.in/blog'>link</a>.
+    </body>
 </html>
