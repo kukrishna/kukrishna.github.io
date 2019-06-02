@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagination in Jupyter</title>
-  <link rel="stylesheet" href="https://stackedit.io/style.css" />
-
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />  
+<!-- <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+ -->
 
 <!--- COMMON HEADER ELEMENTS BEGIN -->
 
@@ -42,11 +44,9 @@ body
 </head>
 
 <body class="stackedit" onload="loadsidebar()">
-
+<div class="container">
   <div class="stackedit__html">
-
-<div class="container"><h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> Back</a></h4>
-
+    <h4 id="back"><a href="../index.html"><i class="icon-angle-double-left"></i> << Back</a></h4>
     <h2 id="pagination-within-jupyter-notebook">Pagination within Jupyter notebook</h2>
 <p>Have you ever felt the need to browse through multiple instances of long-form text? Say you trained a model to generate summaries of news articles and tested it on some 100 sample articles from your test set. Now you would like to browse through these 100 outputs (and possibly the corresponding articles that were input). Traditionally you would go about printing different outputs and inputs but it takes a lot of print statements and leads to a bit of clutter if you are printing multiple text-blobs.</p>
 <p>I coded <sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup> a class <code>Paginate</code> that views an HTML pagination inside a Jupyter notebook to help you navigate through multiple text-blobs in a clean way. Download the <code>paginate.py</code> file from <a href="https://github.com/kukrishna/toolbox/tree/master/jupyter-paginate"> here </a>and then use it as follows</p>
