@@ -53,12 +53,18 @@ function draw() {
 
         const wave1 = sin(time*10*2*PI*frequencies[i] + linePhase);
         const wave2 = cos(linePhase*2*PI*frequencies[i]);
-        const wave3 = sin((0.1+linePhase*0.8)*PI);
+        const wave3 = sin((0.2+linePhase*0.6)*PI);
         const x =  wave3 * (1+wave1)/2 *  (1+wave2)/2 * maxRawAmplitude;
 
-
+        colorMode(RGB);
+        let gradient = drawingContext.createLinearGradient(0, 0, x, 0);
+        let s = stroke_saturation[i];
+        gradient.addColorStop(0, color(s,s,s,255));
+        gradient.addColorStop(1, color(s,s,s,0));
+        
         noStroke();
-        fill(stroke_saturation[i]);
+        drawingContext.fillStyle = gradient;
+        // fill(stroke_saturation[i]);
         rect(0,y, x, (bottom-top)/numLines);
 
         endShape();
